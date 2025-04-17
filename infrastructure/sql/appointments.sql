@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS appointments (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `patient_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '患者ID',
+    `patient_name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '患者姓名',
+    `date` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '日期',
+    `time` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '时间',
+    `duration` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '时长',
+    `type` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '类型',
+    `status` VARCHAR(20) NOT NULL DEFAULT '' COMMENT '状态',
+    `notes` TEXT COMMENT '备注',
+    `user_id` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '用户ID',
+    `is_deleted` TINYINT NOT NULL DEFAULT 0 COMMENT '是否删除',
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+    PRIMARY KEY (`id`),
+    INDEX `idx_patient_id` (`patient_id`),
+    INDEX `idx_user_id` (`user_id`),
+    INDEX `idx_date` (`date`),
+    INDEX `idx_status` (`status`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='预约表';

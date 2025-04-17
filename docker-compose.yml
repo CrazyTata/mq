@@ -1,0 +1,17 @@
+services:
+  mq:
+    build: .
+    ports:
+      - "8872:8872"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./logs/mq:/var/log/mq
+      - ./etc:/app/etc
+    networks:
+      - chatgpt-wechat_network
+networks:
+  chatgpt-wechat_network:
+    external: true
+
+volumes:
